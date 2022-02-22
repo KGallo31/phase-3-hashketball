@@ -127,3 +127,22 @@ def game_hash
 end
 
 # Write code here
+
+def num_points_scored(this_player_name)
+  is_player_there = game_hash[:home][:players].any? {|k| k[:player_name] == this_player_name}
+  if is_player_there 
+    game_hash[:home][:players].each do |player|
+      if player[:player_name] == this_player_name
+        puts player[:points]
+      end
+    end
+  else
+    game_hash[:away][:players].each do |player|
+      if player[:player_name] == this_player_name
+        puts player[:points]
+      end
+    end
+  end
+  # game_hash[:home][:players].each {|k,v| puts "#{k}"}
+end
+num_points_scored("Kemba Walker")
